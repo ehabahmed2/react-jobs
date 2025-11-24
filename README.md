@@ -25,3 +25,18 @@ git clone https://github.com/ehabahmed2/react-jobs.git
 cd react-jobs
 npm install
 npm run dev
+```
+## 📂 Project Structure
+
+```bash
+src/
+  ├── assets/        # Static files (images, jobs.json)
+  ├── components/    # Reusable UI components
+  ├── pages/         # Page-level components (coming soon)
+  ├── App.jsx        # Main app layout
+  └── main.jsx       # Entry point
+```
+## 🚧 Status
+
+This project is a work in progress.Expect frequent changes, new features, and refactoring as development continues.
+

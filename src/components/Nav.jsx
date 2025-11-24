@@ -1,9 +1,11 @@
 import React from 'react'
 import logo from '../assets/images/react.svg'
+import { useState } from 'react';
 
 function Nav() {
   const linkStyle =
     'hover:bg-brand-light  hover:text-white px-3 py-2 rounded-md transition-colors duration-200';
+  const [showLinks, setShowLinks] = useState(false)
 
   return (
     <nav className="bg-neutral-dark">
@@ -15,19 +17,36 @@ function Nav() {
           </div>
 
           {/* Links */}
+
           <ul className="hidden md:flex space-x-4 text-neutral-light">
-            <li><a href="#" className={linkStyle}>Home</a></li>
-            <li><a href="#" className={linkStyle}>Jobs</a></li>
-            <li><a href="#" className={linkStyle}>About</a></li>
+            <li><a href="/" className={linkStyle}>Home</a></li>
+            <li><a href="/jobs" className={linkStyle}>Jobs</a></li>
+            <li><a href="/about" className={linkStyle}>About</a></li>
           </ul>
 
+
+          
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button className="text-white focus:outline-none">
-              ☰
-            </button>
+            <button onClick={()=> {setShowLinks(preveStat => !preveStat)}}
+            className="text-white focus:outline-none">
+              {showLinks ? '✕' : '☰'}
+            </button>            
+            
           </div>
         </div>
+      </div>
+      {/* Mobile Links with transition */}
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out ${
+          showLinks ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+        } overflow-hidden`}
+      >
+        <ul className="flex flex-col space-y-2 px-4 pb-4 text-neutral-light">
+          <li><a href="/" className={linkStyle}>Home</a></li>
+          <li><a href="/jobs" className={linkStyle}>Jobs</a></li>
+          <li><a href="/about" className={linkStyle}>About</a></li>
+        </ul>
       </div>
     </nav>
   )
