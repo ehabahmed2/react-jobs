@@ -4,12 +4,16 @@ import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} fr
 
 import HomePage from './pages/HomePage'
 import MainLayouts from './layouts/MainLayouts'
+import JobsPage from './pages/JobsPage'
+import ErrorPage from './pages/ErrorPage'
 
 {/* Create the router */}
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route path='/' element={<MainLayouts />}>
     <Route index element={<HomePage />} />
+    <Route path='/jobs' element={<JobsPage />} />
+    <Route path='*' element={<ErrorPage />} />
   </Route>
 
 )

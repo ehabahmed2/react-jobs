@@ -1,11 +1,18 @@
 import React from 'react'
 import logo from '../assets/images/react.svg'
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 function Nav() {
-  const linkStyle =
-    'hover:bg-brand-light  hover:text-white px-3 py-2 rounded-md transition-colors duration-200';
   const [showLinks, setShowLinks] = useState(false)
+
+
+  const activeLinkPage = ({isActive}) => {
+    return isActive ?'bg-brand-light  hover:text-white px-3 py-2 rounded-md transition-colors duration-200' 
+    :'hover:bg-brand-light  hover:text-white px-3 py-2 rounded-md transition-colors duration-200'
+  }
+
 
   return (
     <nav className="bg-neutral-dark">
@@ -19,9 +26,9 @@ function Nav() {
           {/* Links */}
 
           <ul className="hidden md:flex space-x-4 text-neutral-light">
-            <li><a href="/" className={linkStyle}>Home</a></li>
-            <li><a href="/jobs" className={linkStyle}>Jobs</a></li>
-            <li><a href="/about" className={linkStyle}>About</a></li>
+            <li><NavLink to="/" className={activeLinkPage}>Home</NavLink></li>
+            <li><NavLink to="/jobs" className={activeLinkPage}>Jobs</NavLink></li>
+            <li><NavLink to="/about" className={activeLinkPage}>About</NavLink></li>
           </ul>
 
 
@@ -42,10 +49,10 @@ function Nav() {
           showLinks ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}
       >
-        <ul className="flex flex-col space-y-2 px-4 pb-4 text-neutral-light">
-          <li><a href="/" className={linkStyle}>Home</a></li>
-          <li><a href="/jobs" className={linkStyle}>Jobs</a></li>
-          <li><a href="/about" className={linkStyle}>About</a></li>
+        <ul className="flex flex-col space-y-4 px-4 pb-4 text-neutral-light">
+          <li><NavLink to="/" className={activeLinkPage}>Home</NavLink></li>
+          <li><NavLink to="/jobs" className={activeLinkPage}>Jobs</NavLink></li>
+          <li><NavLink to="/about" className={activeLinkPage}>About</NavLink></li>
         </ul>
       </div>
     </nav>

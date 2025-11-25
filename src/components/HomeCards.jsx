@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import { Link } from 'react-router-dom'
 
 
 // Generic wrapper that accepts children
@@ -10,7 +11,7 @@ const HomeCards = () => {
             <Card>
             <h2 className=' mb-2 text-xl font-extrabold'>For Developer</h2>
             <p className='mb-6'>Find suitalbe jobs for you</p>
-            <a href="" className='p-2 bg-brand-light hover:bg-neutral-dark rounded-md transition duration-200'>Find a Job</a>
+            <Link to="/jobs" className='p-2 bg-brand-light hover:bg-neutral-dark rounded-md transition duration-200'>Find a Job</Link>
             </Card>
             <Card bg='bg-accent'>
             <h2 className=' mb-2 text-xl font-extrabold' >For Employers</h2>
