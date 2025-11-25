@@ -1,17 +1,41 @@
 import React from 'react'
-import Jobs from '../assets/jobs.json'
 import JobListing from './JobListing'
 import ViewAllJobsBtn from './ViewAllJobsBtn'
+import {useState, useEffect} from  'react'
+import Spinner from './Spinner'
 
 const JobListings = ({isHome=false}) => {
-    const jobListings = isHome ? Jobs : Jobs.slice(0,3);
-    {/* to get only 3 of most recent jobs */}
+  
+    {/* fetch the data */}
+
+    const [jobs, setJobs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{
+      const  fetchJobs = async ()=>{
+        try {
+          const res = await fetch('http://localhost:8000/jobs');
+          const data = await res.json()
+          setJobs(data)
+        } catch (error) {
+          console.log('error fetching data', error)
+        } finally {
+          setLoading(false)
+        } 
+      }
+      fetchJobs();
+    }, 
+  [])
+
   return (
     <section className="py-10 bg-neutral px-5">
       <h1 className="text-3xl font-bold mb-6">Latest Job Listings</h1>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-            {jobListings.map((job) => (
+            {loading ? (<Spinner />) : 
+            <>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            {jobs.map((job) => (
                 <div className="bg-white py-5 rounded-md px-3 shadow-md 
                         hover:shadow-xl hover:-translate-y-1 
                         transition transform duration-200 ease-in-out"
@@ -19,8 +43,11 @@ const JobListings = ({isHome=false}) => {
                 <JobListing job={job} />
                 </div>
                 ))}
-        </div>
+                </div>
 
+                </>
+                
+            }
 
         {isHome? '' : <ViewAllJobsBtn />}
         
