@@ -16,7 +16,7 @@ const HomeCards = () => {
             <Card bg='bg-accent'>
             <h2 className=' mb-2 text-xl font-extrabold' >For Employers</h2>
             <p className='mb-6'>List your job to find developers</p>
-            <a href="" className='p-2 bg-accent-dark hover:bg-neutral-dark  rounded-md transition duration-200'>List a Job</a>
+            <Link to="/add-job" className='p-2 bg-accent-dark hover:bg-neutral-dark  rounded-md transition duration-200'>List a Job</Link>
             </Card>
         </div>
     </section>

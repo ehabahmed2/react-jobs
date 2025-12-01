@@ -1,12 +1,12 @@
 import React from 'react'
 import { useLoaderData} from 'react-router-dom'
+import { FaArrowAltCircleLeft } from 'react-icons/fa';
 
 
 const JobPage = () => {
     const job = useLoaderData();
-
   return (
-        <div className="max-w-4xl mx-auto p-6 bg-neutral-light rounded-lg shadow-xl">
+    <div className="max-w-4xl mx-auto p-6 bg-neutral-light rounded-lg shadow-xl">
       {/* Header */}
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-brand-dark">{job.title}</h1>
@@ -14,7 +14,7 @@ const JobPage = () => {
           onClick={() => window.history.back()}
           className="text-brand hover:text-brand-dark font-medium"
         >
-          ← Back
+          <FaArrowAltCircleLeft className='inline'/> Back
         </button>
       </header>
 
@@ -25,6 +25,7 @@ const JobPage = () => {
           <p className="text-lg"><span className="font-semibold">Location:</span> {job.location}</p>
           <p className="text-lg"><span className="font-semibold">Salary:</span> {job.salary}</p>
           <p className="text-lg"><span className="font-semibold">Type:</span> {job.type}</p>
+          <p className="text-lg"><span className="font-semibold">Contact email:</span> {job.company.contactEmail}</p>
         </div>
         <div className="flex flex-col items-end">
           <button className="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition">
@@ -40,6 +41,7 @@ const JobPage = () => {
       </section>
     </div>
   )
+  
 };
 
 const jobLoader = async ({params}) => {

@@ -1,7 +1,7 @@
 
 
 import heroImage from '../assets/images/hero.png'
-
+import { Link } from 'react-router-dom'
 
 function Hero ({heroTitle ='Find Your Dream Job', heroSubtitle ='Explore thousands of opportunities tailored to your skills and interests.'}) {
 
@@ -18,18 +18,18 @@ function Hero ({heroTitle ='Find Your Dream Job', heroSubtitle ='Explore thousan
             {heroSubtitle}
           </p>
           <div className="space-x-4">
-            <a
-              href="#jobs"
+            <Link
+              to="/jobs"
               className="bg-brand text-white px-6 py-3 rounded hover:bg-brand-dark transition"
             >
               Browse Jobs
-            </a>
-            <a
-              href="#about"
+            </Link>
+            <Link
+              to="/about"
               className="bg-accent text-white px-6 py-3 rounded hover:bg-accent-dark transition"
             >
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
         {/* Right image */}
