@@ -83,18 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "c49b",
-      "title": "test a job",
-      "type": "Full-time",
-      "description": "tst\n",
-      "location": "locatino test",
-      "salary": "confidential",
-      "company": {
-        "name": "company test",
-        "companyEmail": "email@gmail.test"
-      }
     }
   ]
 }

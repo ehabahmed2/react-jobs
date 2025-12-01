@@ -9,7 +9,11 @@ import ErrorPage from './pages/ErrorPage'
 import JobPage, {jobLoader} from './pages/JobPage'
 import AddJobPage from './pages/AddJobPage'
 
-{/* Create the router */}
+
+const App = () => {
+
+
+  {/* Create the router */}
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route path='/' element={<MainLayouts />}>
@@ -23,7 +27,7 @@ const router = createBrowserRouter(
 )
 )
 
-const App = () => {
+
   return <RouterProvider router={router} />
 }
 

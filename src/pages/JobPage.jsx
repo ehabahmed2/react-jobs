@@ -1,10 +1,33 @@
 import React from 'react'
-import { useLoaderData} from 'react-router-dom'
+import { useLoaderData, useNavigate, useParams} from 'react-router-dom'
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
 
 
 const JobPage = () => {
     const job = useLoaderData();
+    const navigate = useNavigate()
+    const {id} = useParams()
+    
+
+    {/*delete job*/}
+    const deleteJob = (id) => {
+      {/*confirm delete*/}
+      const confirm = window.confirm("Are you sure you want to delete this Job?");
+      if (!confirm) return;
+      {/*if user confirmed -- delete it*/}
+      const confirmDelete = async (id) => {
+        const res = await fetch(`/api/jobs/${id}`, {
+          method: 'DELETE',
+        });
+        return;
+
+      }
+      confirmDelete(id)
+      return navigate('/jobs')
+    }
+    
+
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-neutral-light rounded-lg shadow-xl">
       {/* Header */}
@@ -28,8 +51,11 @@ const JobPage = () => {
           <p className="text-lg"><span className="font-semibold">Contact email:</span> {job.company.contactEmail}</p>
         </div>
         <div className="flex flex-col items-end">
-          <button className="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition">
+          <button className="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition mb-5">
             Apply Now
+          </button>
+          <button onClick={()=> deleteJob(id)} className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent-dark transition ">
+            Delete Job
           </button>
         </div>
       </section>
