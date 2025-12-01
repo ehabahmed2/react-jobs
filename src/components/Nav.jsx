@@ -20,7 +20,7 @@ function Nav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand */}
           <div className="flex-shrink-0 text-white font-bold text-xl">
-            <img src={logo} />
+            <NavLink to="/"><img src={logo} /></NavLink>
           </div>
 
           {/* Links */}

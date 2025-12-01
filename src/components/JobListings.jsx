@@ -14,9 +14,9 @@ const JobListings = ({isHome=false}) => {
     useEffect(()=>{
       const  fetchJobs = async ()=>{
         try {
-          const res = await fetch('http://localhost:8000/jobs');
-          const data = await res.json()
-          setJobs(data)
+          const res = await fetch('/api/jobs');
+          const data = await res.json();
+          setJobs(isHome ? data: data.slice(0, 3));
         } catch (error) {
           console.log('error fetching data', error)
         } finally {
@@ -49,7 +49,7 @@ const JobListings = ({isHome=false}) => {
                 
             }
 
-        {isHome? '' : <ViewAllJobsBtn />}
+        {isHome ? '' : <ViewAllJobsBtn />}
         
     </section>
   )
