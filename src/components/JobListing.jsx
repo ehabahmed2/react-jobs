@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import {FaMapMarked, FaMapMarker} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const JobListing = ({job}) => {
 
@@ -29,9 +30,9 @@ const JobListing = ({job}) => {
                     <p className="text-gray-500 mb-4">
                     {job.salary} • <span className="capitalize">{job.type}</span>
                     </p>
-                    <a href={`/jobs/${job.id}`} className="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
-                    Apply Now
-                    </a>
+                    <Link to={`/jobs/${job.id}`} className="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
+                    View Details
+                    </Link>
 
       </div>
   )
