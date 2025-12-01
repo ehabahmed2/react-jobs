@@ -29,7 +29,7 @@ const JobListing = ({job}) => {
                     <p className="text-gray-500 mb-4">
                     {job.salary} • <span className="capitalize">{job.type}</span>
                     </p>
-                    <a href={`/job/${job.id}`} className="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
+                    <a href={`/jobs/${job.id}`} className="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
                     Apply Now
                     </a>
 
