@@ -1,19 +1,18 @@
 import React from 'react'
 import { useLoaderData, useNavigate, useParams} from 'react-router-dom'
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
-
+import ConfirmAction from '../components/ConfirmAction';
+import { useState } from 'react';
 
 const JobPage = () => {
     const job = useLoaderData();
     const navigate = useNavigate()
     const {id} = useParams()
+    const [showConfirm, setShowConfirm] = useState(false)
     
 
     {/*delete job*/}
     const deleteJob = (id) => {
-      {/*confirm delete*/}
-      const confirm = window.confirm("Are you sure you want to delete this Job?");
-      if (!confirm) return;
       {/*if user confirmed -- delete it*/}
       const confirmDelete = async (id) => {
         const res = await fetch(`/api/jobs/${id}`, {
@@ -24,6 +23,7 @@ const JobPage = () => {
       }
       confirmDelete(id)
       return navigate('/jobs')
+
     }
     
 
@@ -54,9 +54,20 @@ const JobPage = () => {
           <button className="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition mb-5">
             Apply Now
           </button>
-          <button onClick={()=> deleteJob(id)} className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent-dark transition ">
+          <button onClick={()=> setShowConfirm(true)} 
+          className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent-dark transition ">
             Delete Job
           </button>
+          {/*confirm if use wants to cancel it first*/}
+          
+          {showConfirm && (
+            <ConfirmAction
+              message="Are you sure you want to delete this job?"
+              onConfirm={() => deleteJob(id)}
+              onCancel={() => setShowConfirm(false)}
+            />
+          )}
+
         </div>
       </section>
 
