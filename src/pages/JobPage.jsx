@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate, useParams} from 'react-router-dom'
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
 import ConfirmAction from '../components/ConfirmAction';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const JobPage = () => {
     const job = useLoaderData();
@@ -22,6 +23,7 @@ const JobPage = () => {
 
       }
       confirmDelete(id)
+      toast.success('Job deleted successfully!')
       return navigate('/jobs')
 
     }

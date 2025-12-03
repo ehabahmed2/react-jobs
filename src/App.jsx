@@ -8,6 +8,7 @@ import JobsPage from './pages/JobsPage'
 import ErrorPage from './pages/ErrorPage'
 import JobPage, {jobLoader} from './pages/JobPage'
 import AddJobPage from './pages/AddJobPage'
+import About from './pages/About'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
     <Route path='/jobs' element={<JobsPage />} />
     <Route path='/jobs/:id' element={<JobPage />} loader={jobLoader} />
     <Route path='/add-job' element={<AddJobPage />} />
+    <Route path='/about' element={<About />} />
     <Route path='*' element={<ErrorPage />} />
   </Route>
 
