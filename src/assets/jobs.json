@@ -55,18 +55,6 @@
         "contactEmail": "contact@consecteturadipisicing.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "8281",
-      "title": "This is a test job",
-      "type": "Full-time",
-      "description": "work with houba anywhere\n",
-      "location": "hoba city",
-      "salary": "9090909",
-      "company": {
-        "name": "للاستيراد و التصدير هوووووووووووبا",
-        "companyEmail": "houba@gmail.com"
-      }
     }
   ]
 }

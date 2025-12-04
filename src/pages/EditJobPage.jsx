@@ -1,55 +1,66 @@
 import React from 'react'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useLoaderData } from 'react-router-dom'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
+const EditJobPage = () => {
+    {/*load job*/}
+    const job = useLoaderData()
 
+    const navigate = useNavigate()
+    {/*add job's data into use stat*/}
+    const [title, setTitle] = useState(job.title);
+    const [company, setCompany] = useState(job.company.name);
+    const [contactEmail, setCompanyEmail] = useState(job.company.contactEmail);
+    const [location, setLocation] = useState(job.location);
+    const [salary, setSalary] = useState(job.salary);
+    const [type, setType] = useState(job.type);
+    const [description, setDescription] = useState(job.description);
 
-
-const AddJobPage = () => {
-  const [title, setTitle] = useState('');
-  const [company, setCompany] = useState('');
-  const [contactEmail, setCompanyEmail] = useState('');
-  const [location, setLocation] = useState('');
-  const [salary, setSalary] = useState('confidential');
-  const [type, setType] = useState('');
-  const [description, setDescription] = useState('');
-
-  {/*intialize navigate*/}
-  const navigate = useNavigate()
-
-  const submitFrom = (e) => {
-    e.preventDefault();
-    const newJob = {
-        title,
-        type,
-        description,
-        location, 
-        salary,
-        company: {
-            name: company,
-            contactEmail: contactEmail
-        } 
-    }
     {/*now post this new job to api*/}
-    const addJob = async (newJob) => {
-        const res = await fetch('/api/jobs', {
-            method: 'POST',
+    const updateJob = async (updatedJob) => {
+        const res = await fetch(`/api/jobs/${job.id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newJob)
+            body: JSON.stringify(updatedJob)
         });
+        if(!res.ok) {
+            toast.error('Failed to update page!')
+            return;
+        }
         return;
     };
-    addJob(newJob);
-    toast.success('Job added successfully!')
-    return navigate('/jobs')
-  }
+
+    {/*on submit, pass the new data to api to update*/}
+    const submitform = (e)=> {
+        e.preventDefault();
+        const updatedJob = {
+            id: job.id,
+            title,
+            type,
+            description,
+            location, 
+            salary,
+            company: {
+                name: company,
+                contactEmail: contactEmail,
+            }
+            
+        }
+        updateJob(updatedJob);
+        toast.success('Job updated successfully!')
+        return navigate('/jobs')
+    };
+
+
+
   return (
     <div className="max-w-3xl mx-auto p-6 bg-neutral-light rounded-lg shadow-md my-5">
-      <h1 className="text-3xl font-bold text-brand-dark mb-6">Add New Job</h1>
-      <form className="space-y-4" onSubmit={submitFrom}>
+      <h1 className="text-3xl font-bold text-brand-dark mb-6">Update Job Job</h1>
+      <form className="space-y-4" onSubmit={submitform}>
         {/* Job Title */}
         <div>
           <label className="block text-neutral-dark mb-2">Job Title</label>
@@ -150,7 +161,7 @@ const AddJobPage = () => {
         </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default AddJobPage
+export default EditJobPage

@@ -4,6 +4,7 @@ import { FaArrowAltCircleLeft } from 'react-icons/fa';
 import ConfirmAction from '../components/ConfirmAction';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const JobPage = () => {
     const job = useLoaderData();
@@ -44,7 +45,7 @@ const JobPage = () => {
       </header>
 
       {/* Job Info */}
-      <section className="grid grid-cols-70/30 gap-6 mb-6">
+      <section className="grid grid-cols-70/30 gap-5 mb-6">
         <div>
           <p className="text-lg"><span className="font-semibold">Company:</span> {job.company.name}</p>
           <p className="text-lg"><span className="font-semibold">Location:</span> {job.location}</p>
@@ -53,11 +54,15 @@ const JobPage = () => {
           <p className="text-lg"><span className="font-semibold">Contact email:</span> {job.company.contactEmail}</p>
         </div>
         <div className="flex flex-col items-end">
-          <button className="bg-brand text-white px-6 py-3 rounded-lg hover:bg-brand-dark transition mb-5">
+          <button className="bg-brand w-20 text-sm py-2 px-1 text-white md:px-4 md:py-2 rounded-lg  md:w-32 md:text-lg hover:bg-brand-dark transition mb-5">
             Apply Now
           </button>
+          <Link to={`/edit-job/${job.id}`}
+          className="bg-neutral-700 w-20 text-sm py-2 px-1 text-white md:px-4 md:py-2 md:w-32 md:text-lg rounded-lg hover:bg-neutral-dark transition mb-5 text-center">
+            Edit Job
+          </Link> 
           <button onClick={()=> setShowConfirm(true)} 
-          className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent-dark transition ">
+          className="bg-accent w-20 py-2 px-1 text-sm text-white md:px-4 md:py-2 md:w-32 md:text-lg rounded-lg hover:bg-accent-dark transition ">
             Delete Job
           </button>
           {/*confirm if use wants to cancel it first*/}
