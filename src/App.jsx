@@ -18,13 +18,17 @@ const App = () => {
     {/* Create the router */}
   const router = createBrowserRouter(
     createRoutesFromElements(
-    <Route path='/react-jobs' element={<MainLayouts />}>
+    <Route path='/' element={<MainLayouts />}>
       <Route index element={<HomePage />} />
       <Route path='/jobs' element={<JobsPage />} />
       <Route path='/jobs/:id' element={<JobPage />} loader={jobLoader} />
       <Route path='/edit-job/:id' element={<EditJobPage />} loader={jobLoader} />
       <Route path='/add-job' element={<AddJobPage />} />
       <Route path='/about' element={<About />} />
+
+      {/* Redirect /react-jobs to / */}
+        <Route path='/react-jobs' element={<Navigate to="/" replace />} />
+
       <Route path='*' element={<ErrorPage />} />
     </Route>
 
