@@ -3,7 +3,15 @@ import JobListings from '../components/JobListings'
 import { Link } from 'react-router-dom'
 import { FaArrowAltCircleLeft } from 'react-icons/fa'
 
+
+
+
 const JobsPage = () => {
+
+
+
+
+  
 
   return (
     <section className='bg-neutral-light px-4 py-6'>

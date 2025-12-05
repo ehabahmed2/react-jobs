@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/react-jobs/', // 👈 important for GitHub Pages
+  base: '/', // important for GitHub Pages
   server: {
     port: 3000,
     proxy: {
