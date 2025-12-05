@@ -25,14 +25,14 @@ const App = () => {
       <Route path='/edit-job/:id' element={<EditJobPage />} loader={jobLoader} />
       <Route path='/add-job' element={<AddJobPage />} />
       <Route path='/about' element={<About />} />
-
-      {/* Redirect /react-jobs to / */}
-        <Route path='/react-jobs' element={<Navigate to="/" replace />} />
-
       <Route path='*' element={<ErrorPage />} />
     </Route>
 
-  )
+  ),
+  {
+    basename: "/react-jobs",   // this tells react this is teh base link
+  }
+
   )
 
 
