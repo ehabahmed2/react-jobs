@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate} from 'react-router-dom'
 
 
 import HomePage from './pages/HomePage'
@@ -13,7 +13,7 @@ import EditJobPage from './pages/EditJobPage'
 
 
 const App = () => {
-
+  {/*itialize navigate */}
 
     {/* Create the router */}
   const router = createBrowserRouter(
