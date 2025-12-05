@@ -32,7 +32,7 @@ const JobPage = () => {
 
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-neutral-light rounded-lg shadow-xl">
+    <div className="max-w-4xl mx-auto p-6 bg-neutral-light rounded-lg shadow-xl my-5">
       {/* Header */}
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-brand-dark">{job.title}</h1>

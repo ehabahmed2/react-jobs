@@ -3,6 +3,8 @@ import JobListing from './JobListing'
 import ViewAllJobsBtn from './ViewAllJobsBtn'
 import {useState, useEffect} from  'react'
 import Spinner from './Spinner'
+import { FaArrowAltCircleLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const JobListings = ({isHome=false}) => {
   
