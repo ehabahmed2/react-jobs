@@ -18,7 +18,7 @@ const App = () => {
     {/* Create the router */}
   const router = createBrowserRouter(
     createRoutesFromElements(
-    <Route path='/' element={<MainLayouts />}>
+    <Route path='/react-jobs' element={<MainLayouts />}>
       <Route index element={<HomePage />} />
       <Route path='/jobs' element={<JobsPage />} />
       <Route path='/jobs/:id' element={<JobPage />} loader={jobLoader} />
